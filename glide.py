@@ -3,7 +3,7 @@ import numpy as np
 # Aircraft parameters (same trainer as simulate.py)
 mass = 1000.0      # kg
 wing_area = 16.0   # m^2
-cd0 = 0.03         # zero-lift drag coefficient
+cd0 = 0.02         # zero-lift drag coefficient
 k = 0.05           # induced drag factor
 rho = 1.225        # air density at sea level, kg/m^3
 g = 9.81           # m/s^2
