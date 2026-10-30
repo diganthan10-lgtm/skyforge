@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from aircraft import mass, wing_area, thrust, cd0, k, cl_max, rho0, g
-
+from aircraft import mass, wing_area, thrust, cd0, k, cl_max, rho as rho0, g
 dt = 0.1
 t_end = 120.0
 steps = int(t_end / dt)
