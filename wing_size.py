@@ -1,9 +1,6 @@
 import numpy as np
 
-# Design targets
-mass = 1000.0        # kg, aircraft weight
-g = 9.81             # m/s^2
-rho = 1.225          # air density at sea level, kg/m^3
+from aircraft import mass, rho, g
 cl_takeoff = 1.2     # takeoff lift coefficient (flaps assumed)
 v_takeoff_kts = 45   # target takeoff speed, knots
 
