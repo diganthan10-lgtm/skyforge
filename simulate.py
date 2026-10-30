@@ -1,15 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Aircraft parameters (rough values for a small trainer)
-mass = 1000.0          # kg
-wing_area = 16.0       # m^2
-thrust = 2000.0        # N, held constant for this simple model
-cd0 = 0.03             # zero-lift drag coefficient
-k = 0.05               # induced drag factor
-cl_max = 1.5           # max lift coefficient before stall
-rho0 = 1.225           # sea-level air density, kg/m^3
-g = 9.81               # m/s^2
+from aircraft import mass, wing_area, thrust, cd0, k, cl_max, rho0, g
 
 dt = 0.1
 t_end = 120.0
