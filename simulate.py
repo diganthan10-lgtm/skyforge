@@ -10,31 +10,34 @@ steps = int(t_end / dt)
 x, h, v, gamma = 0.0, 0.0, 0.0, 0.0
 
 time, altitude, speed, aoa = [], [], [], []
+takeoff_distance = None
 
 for i in range(steps):
-    rho = rho0 * np.exp(-h / 8500)  # simple exponential atmosphere
+    rho = rho0 * np.exp(-h / 8500)
     q = 0.5 * rho * v**2
 
-    cl = (mass * g * np.cos(gamma)) / (q * wing_area) if q > 0 else 0.0
-    cl = min(cl, cl_max)
-    cd = cd0 + k * cl**2
-    drag = q * wing_area * cd
-    lift = q * wing_area * cl
+    drag = q * wing_area * (cd0 + k * (min(mass * g / (q * wing_area), cl_max))**2) if q > 0 else 0.0
 
-    # Accelerations along and perpendicular to the flight path
-    dv = (thrust - drag - mass * g * np.sin(gamma)) / mass
-    dgamma = (lift - mass * g * np.cos(gamma)) / (mass * max(v, 1.0))
+    v_stall = np.sqrt(2 * mass * g / (rho0 * wing_area * cl_max))
+    if h <= 0 and v < 1.1 * v_stall:
+        gamma = 0.0
+        dv = (thrust - drag) / mass
+        v += dv * dt
+    else:
+        if takeoff_distance is None:
+            takeoff_distance = x
+        gamma = np.radians(10.0)
+        dv = (thrust - drag - mass * g * np.sin(gamma)) / mass
+        v = max(v + dv * dt, 0.0)
+        h += v * np.sin(gamma) * dt
+        h = max(h, 0.0)
 
-    v = max(v + dv * dt, 0.0)
-    gamma = gamma + dgamma * dt
     x += v * np.cos(gamma) * dt
-    h += v * np.sin(gamma) * dt
-    h = max(h, 0.0)
-
     time.append(i * dt)
     altitude.append(h)
     speed.append(v)
     aoa.append(np.degrees(gamma))
+print(f"Takeoff distance: {takeoff_distance:.0f} m")
 
 fig, axes = plt.subplots(3, 1, figsize=(8, 9), sharex=True)
 axes[0].plot(time, altitude); axes[0].set_ylabel("Altitude (m)")
