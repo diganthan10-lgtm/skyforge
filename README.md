@@ -1,5 +1,5 @@
 # skyforge
-
+![Takeoff and climb plot](takeoff.png)
 A small flight dynamics sandbox. Define an aircraft's mass, wing area, thrust, and drag coefficients, then simulate its takeoff, climb, and cruise and plot the results.
 
 ## Features
