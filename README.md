@@ -8,7 +8,10 @@ A small flight dynamics sandbox. Define an aircraft's mass, wing area, thrust, a
 - Plots of altitude, airspeed, and angle of attack over time
 - `glide.py`: calculates best glide ratio, best glide speed, and glide distance
 - `wing_size.py`: computes the wing area needed for a target takeoff speed
-
+## Limitations
+- Climb angle is fixed at 10° after liftoff rather than computed from the forces.
+- Thrust is constant and air density follows a simple exponential model.
+- Results are rough estimates for learning, not for real aircraft design.
 ## Setup
 ```bash
 pip install numpy matplotlib
