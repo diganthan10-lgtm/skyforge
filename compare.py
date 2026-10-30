@@ -1,7 +1,6 @@
 import numpy as np
 
-rho = 1.225   # sea-level air density, kg/m^3
-g = 9.81      # m/s^2
+from aircraft import rho, g
 
 # Approximate specs (verify against manufacturer data before relying on these)
 # name: (max takeoff weight kg, wing area m^2, max lift coefficient with flaps)
