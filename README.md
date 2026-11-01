@@ -1,5 +1,6 @@
 # skyforge
 ![Takeoff and climb plot](takeoff.png)
+![Lift vs angle of attack plot](lift_alpha.png)
 A small flight dynamics sandbox. Define an aircraft's mass, wing area, thrust, and drag coefficients, then simulate its takeoff, climb, and cruise and plot the results.
 
 ## Features
@@ -8,6 +9,7 @@ A small flight dynamics sandbox. Define an aircraft's mass, wing area, thrust, a
 - Plots of altitude, airspeed, and angle of attack over time
 - `glide.py`: calculates best glide ratio, best glide speed, and glide distance
 - `wing_size.py`: computes the wing area needed for a target takeoff speed
+- `lift_alpha.py`: plots lift coefficient vs angle of attack using thin airfoil theory, clipped at CL,max
 ## Limitations
 - Climb angle is fixed at 10° after liftoff rather than computed from the forces.
 - Thrust is constant and air density follows a simple exponential model.
