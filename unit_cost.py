@@ -27,10 +27,3 @@ profit_per_hr = revenue_per_hr - cost_per_hr
 
 print(f"Revenue per flight hour at ${ticket_price:,.0f}/seat: ${revenue_per_hr:,.0f}")
 print(f"Profit per flight hour: ${profit_per_hr:,.0f}")
-ticket_price = 150.0       # $ per seat, what you plan to charge
-
-revenue_per_hr = ticket_price * seats_sold
-profit_per_hr = revenue_per_hr - cost_per_hr
-
-print(f"Revenue per flight hour at ${ticket_price:,.0f}/seat: ${revenue_per_hr:,.0f}")
-print(f"Profit per flight hour: ${profit_per_hr:,.0f}")
