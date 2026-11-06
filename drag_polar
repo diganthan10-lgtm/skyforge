@@ -1,0 +1,28 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+from aircraft import cd0, k, cl_max
+
+# Drag polar: CD = CD0 + k * CL^2
+cl = np.linspace(0, cl_max, 200)
+cd = cd0 + k * cl**2
+
+# Best glide point: where L/D is highest, CL = sqrt(CD0 / k)
+cl_best = np.sqrt(cd0 / k)
+cd_best = cd0 + k * cl_best**2
+glide_ratio = cl_best / cd_best
+
+print(f"Best CL: {cl_best:.3f}")
+print(f"CD at best CL: {cd_best:.3f}")
+print(f"Max L/D: {glide_ratio:.1f}")
+
+plt.figure(figsize=(7, 6))
+plt.plot(cd, cl, label="Drag polar")
+plt.plot(cd_best, cl_best, "ro", label=f"Best glide (L/D = {glide_ratio:.1f})")
+plt.xlabel("Drag coefficient CD")
+plt.ylabel("Lift coefficient CL")
+plt.title("skyforge: drag polar")
+plt.legend()
+plt.grid(alpha=0.3)
+plt.tight_layout()
+plt.show()
